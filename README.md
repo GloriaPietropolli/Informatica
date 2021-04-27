@@ -2,3 +2,5 @@
 ## CORSO DI LAUREA DI MATEMATICA
 
 Esercizi svolti durante il tutorato del corso di informatica
+
+- _week3_ : implementazione di heap binarie applicabile all'algoritmo di Dijkstra
