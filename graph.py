@@ -125,3 +125,66 @@ def ricerca_ampiezza(G, s):
             nodo_attuale = nodo_attuale.succ
         colore[u] = Colore.NERO # abbiamo fininto di visitare tutti i nodi raggiungibili da u
     return distanza
+
+
+# IMPLEMENTAZIONE DELLA VISITA IN PROFONDITA'
+
+# stiamo usando variabli locali (non globali) per porprieà come colore, tempo, predecessore..
+# Nella implementazione di DFS dobbiamo utilizzare due funzioni distinte e vorremmo che queste variabili si potessero
+# leggere da una funzione all'altra
+
+# SOLUZIONE? --> introduciamo una CLASSE in cui raccogliamo queste informazioni
+
+class Parametri:
+    def __init__(self, colore, predecessore, t_inizio, t_fine, t):
+        self.colore = colore
+        self.predecessore = predecessore
+        self.t_inizio = t_inizio
+        self.t_fine = t_fine
+        self.t = t
+
+def ricerca_profondità(G):
+    """
+    IMplementazione delle routine per la ricerca in profonfità
+    :param G: grafo di input
+    :return: parametri (oggetto della classe Parametri)
+    """
+    colore = [None] * G.numero_nodi
+    predecessore = [None] * G.numero_nodi
+    t_inizio = [None] * G.numero_nodi
+    t_fine = [None] * G.numero_nodi
+    for i in range(0, G.numero_nodi):
+        colore[i] = Colore.BIANCO
+    t = 0  # azzeriamo il contatore globale del tempo
+    # raccogliamo tutti i parametri in un unico oggetto
+    p = Parametri(colore, predecessore, t_inizio, t_fine, t)
+    for u in range(0, G.numero_nodi):  # seleziono ogni singolo nodo del grafo e per ogni nodo avvio una procedura
+        # che ha il compito di effettuare la visita vera e propria
+        DFS_visit(G, u, p)
+    return p
+
+def DFS_visit(G, u, p):
+    """
+    La procedura per la visita si occupa di:
+    - colorare opportunamente tutti i vertici visitati a partire da u
+    - aggiornare i valori temporali
+    - costruire la foresta DFS
+    :param G: grafo di input
+    :param u: vertice considerato
+    :param p: parametri
+    """
+    p.t += 1
+    p.t_inizio[u] = p.t
+    p.colore[u] = Colore.GRIGIO
+    nodo_corrente = G.liste[u].testa
+    # visitiamo ognuno dei nodi adiacenti ad u scorrendo la lista
+    while nodo_corrente is not None:
+        v = nodo_corrente.value
+        if p.colore[v] == Colore.BIANCO:
+            p.predecessore[v] = u
+            DFS_visit(G, v, p)
+        nodo_corrente = nodo_corrente.succ
+    p.colore[u] = Colore.NERO
+    p.t += 1
+    p.t_fine[u] = p.t
+
