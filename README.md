@@ -1,5 +1,5 @@
 # TUTORATO DI INFORMATICA
-## CORSO DI LAUREA DI MATEMATICA
+## CORSO DI LAUREA IN MATEMATICA
 
 Esercizi svolti durante il tutorato del corso di informatica
 
