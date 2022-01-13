@@ -1,5 +1,10 @@
-# TUTORATO DI INFORMATICA
-## CORSO DI LAUREA IN MATEMATICA
+# Informatica
+__Informatica tutoring repository. CdL _Matematica_ @Units__, 2021
+
+This repository contains all the python code implemented during the tutoring lessons. 
+Code runs with python 3.8.5 on Ubuntu 20.04, entering the following command: 
+```bash
+python3 nomeprogramma.py
 
 Esercizi svolti durante il tutorato del corso di informatica
 
