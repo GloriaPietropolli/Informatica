@@ -5,6 +5,7 @@ This repository contains all the python code implemented during the tutoring les
 Code runs with python 3.8.5 on Ubuntu 20.04, entering the following command: 
 ```bash
 python3 nomeprogramma.py
+```
 
 Esercizi svolti durante il tutorato del corso di informatica
 
